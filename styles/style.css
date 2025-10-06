@@ -1,0 +1,330 @@
+:root {
+    --bg-dark: #000;
+    --bg-card: #013220;
+    /* matte green */
+    --text-light: #fff;
+    --accent-green: #00aa66;
+    --input-bg: #111;
+    --input-border: #00aa66;
+}
+
+@font-face {
+    font-family: 'Pixel Digivolve';
+    src: url('/fonts/PixelDigivolve.woff2') format('woff2'),
+        url('/fonts/PixelDigivolve.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Pixel Digivolve', 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 1.2rem;
+    color: var(--accent-green);
+}
+.black{
+    color: black;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 1rem 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    flex: 1 1 400px;
+    box-shadow: 0 0 15px rgba(0, 255, 100, 0.15);
+    min-width: 340px;
+}
+
+.card h2 {
+    color: var(--text-light);
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-green);
+    padding-bottom: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.8rem 1rem;
+    align-items: center;
+}
+
+.input-group, .input-pair {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    background: var(--input-bg);
+    color: var(--text-light);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    text-align: center;
+    width: 70px;
+}
+
+input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent-green);
+}
+
+.x-symbol {
+    font-weight: bold;
+    color: var(--accent-green);
+}
+/* Modern checkbox style */
+input[type="checkbox"] {
+    appearance: none; /* remove default checkbox */
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-green);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--bg-dark);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked::after {
+    opacity: 1;
+}
+
+/* Align label and checkbox horizontally */
+.form-grid label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Ensure checkboxes stay on one line on mobile */
+@media (max-width: 768px) {
+    .form-grid label {
+        flex-wrap: nowrap;
+    }
+}
+
+.icons .arrow {
+    color: #fff !important;
+    /* mobile arrows white */
+}
+
+.generate-btn, .hex-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: var(--accent-green);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--bg-dark);
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.generate-btn:hover, .hex-btn:hover {
+    background: #00cc77;
+}
+.hex-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--accent-green);
+    text-decoration: none;
+    font-weight: bold;
+}
+.hex-link:hover {
+    text-decoration: underline;
+}
+
+.hex-link:visited {
+    color: var(--accent-green);
+}
+.info-note {
+    font-size: 0.85rem;
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.info-note strong {
+    color: var(--accent-green);
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    display: none;
+    /* hidden by default */
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--accent-green);
+    transition: width 0.4s ease;
+}
+
+/* SVG Section */
+.svg-display {
+    flex: 2 1 800px;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    min-height: 60vh;
+}
+
+.image-info {
+    color: #000;
+    font-weight: 600;
+    background: #f5f5f5;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+
+.svg-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    /* scrollable in both directions */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+}
+
+svg {
+    max-width: none;
+    height: auto;
+    display: block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--accent-green);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .svg-display {
+        width: 100%;
+        min-height: 50vh;
+    }
+}
+
+/* Mobile-only disclaimer for SVG display */
+@media (max-width: 768px) {
+    .mobile-disclaimer {
+        display: block !important;
+        font-size: 0.85rem;
+        color: #ffcc00;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+
+    /* Ensure input lines remain single-line and responsive */
+    .input-group,
+    .form-grid input {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .input-group::-webkit-scrollbar,
+    .form-grid input::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .input-group::-webkit-scrollbar-thumb,
+    .form-grid input::-webkit-scrollbar-thumb {
+        background: var(--accent-green);
+        border-radius: 3px;
+    }
+
+    /* Arrow colors white on mobile */
+    .icons .arrow {
+        color: #fff !important;
+    }
+}
+
+/* Hide disclaimer on desktop */
+.mobile-disclaimer {
+    display: none;
+}

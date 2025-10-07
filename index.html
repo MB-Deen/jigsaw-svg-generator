@@ -2,101 +2,103 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Jigsaw Puzzle Generator</title>
-  <link rel="stylesheet" href="styles/style.css">
-  <script src="scripts/script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Jigsaw Puzzle Generator</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/script.js" defer></script>
 </head>
 
 <body onload="document.getElementById('seed').value = Math.random() * 10000; updateseed();">
 
-  <header>
-    <h1>🧩 SVG Jigsaw Puzzle Generator</h1>
-  </header>
+    <header>
+        <h1>🧩 SVG Jigsaw Puzzle Generator</h1>
+    </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Configuration</h2>
-      <p class="info-note ">The image auto-generates. Press <strong>Enter</strong> If you change any value.</p>
+    <main class="container">
+        <section class="card">
+            <h2>Configuration</h2>
+            <p class="info-note ">The image auto-generates. Press <strong>Enter</strong> If you change any value.</p>
 
-      <div class="form-grid">
-        <label>Seed:</label>
-        <div class="input-group">
-          <input id="_seed" type="text" value="0" onchange="update_seed()">
-          <input id="seed" type="range" value="0" min="0" max="9999" step="1" onchange="updateseed()">
-        </div>
+            <div class="form-grid">
+                <label>Seed:</label>
+                <div class="input-group">
+                    <input id="_seed" type="text" value="0" onchange="update_seed()">
+                    <input id="seed" type="range" value="0" min="0" max="9999" step="1" onchange="updateseed()">
+                </div>
 
-        <label>Tab Size:</label>
-        <div class="input-group">
-          <input id="_tabsize" type="text" value="20%" onchange="update_tabsize()">
-          <input id="tabsize" type="range" value="20" min="10" max="30" step="0.1" onchange="updatetabsize()">
-        </div>
+                <label>Tab Size:</label>
+                <div class="input-group">
+                    <input id="_tabsize" type="text" value="20%" onchange="update_tabsize()">
+                    <input id="tabsize" type="range" value="20" min="10" max="30" step="0.1" onchange="updatetabsize()">
+                </div>
 
-        <label>Jitter:</label>
-        <div class="input-group">
-          <input id="_jitter" type="text" value="4%" onchange="update_jitter()">
-          <input id="jitter" type="range" value="4" min="0" max="13" step="0.1" onchange="updatejitter()">
-        </div>
+                <label>Jitter:</label>
+                <div class="input-group">
+                    <input id="_jitter" type="text" value="4%" onchange="update_jitter()">
+                    <input id="jitter" type="range" value="4" min="0" max="13" step="0.1" onchange="updatejitter()">
+                </div>
 
-        <label>Corner Radius (mm):</label>
-        <input id="radius" type="text" value="2.0" onchange="update()">
+                <label>Corner Radius (mm):</label>
+                <input id="radius" type="text" value="2.0" onchange="update()">
 
-        <label>Tiles:</label>
-        <div class="input-pair icons">
-          <span class="arrow">→</span>
-          <input id="xn" type="text" value="15" onchange="update()">
-          <span class="x-symbol">×</span>
-          <span class="arrow">↓</span>
-          <input id="yn" type="text" value="10" onchange="update()">
-        </div>
+                <label>Tiles:</label>
+                <div class="input-pair icons">
+                    <span class="arrow">→</span>
+                    <input id="xn" type="text" value="15" onchange="update()">
+                    <span class="x-symbol">×</span>
+                    <span class="arrow">↓</span>
+                    <input id="yn" type="text" value="10" onchange="update()">
+                </div>
 
-        <label>Size(mm):</label>
-        <div class="input-pair">
-          <span>W</span>
-          <input id="width" type="text" value="300" onchange="update();">
-          <span class="x-symbol">×</span>
-          <span>H</span>
-          <input id="height" type="text" value="200" onchange="update();">
-        </div>
-      </div>
-    </section>
+                <label>Size(mm):</label>
+                <div class="input-pair">
+                    <span>W</span>
+                    <input id="width" type="text" value="300" onchange="update();">
+                    <span class="x-symbol">×</span>
+                    <span>H</span>
+                    <input id="height" type="text" value="200" onchange="update();">
+                </div>
+            </div>
+        </section>
 
-<section class="svg-display">
-  <div class="mobile-disclaimer">
-    ⚠️ The image may not be clearly visible on mobile. Use a desktop for full experience.
-  </div>
+        <section class="svg-display">
+            <div class="mobile-disclaimer">
+                ⚠️ The image may not be clearly visible on mobile. Use a desktop for full experience.
+            </div>
 
-  <div id="image-info" class="image-info">Width: 300 mm | Height: 200 mm</div>
+            <div id="image-info" class="image-info">Width: 300 mm | Height: 200 mm</div>
+                <div class="svg-wrapper" id="svg-wrapper">
+            <center>
 
-  <div class="svg-wrapper" id="svg-wrapper">
-    <svg id="puzzlecontainer" preserveAspectRatio="xMidYMid meet">
-      <path id="puzzlepath_h" fill="none" stroke="black"></path>
-      <path id="puzzlepath_v" fill="none" stroke="black"></path>
-      <path id="puzzlepath_b" fill="none" stroke="black"></path>
-    </svg>
-  </div>
+                    <svg id="puzzlecontainer" preserveAspectRatio="xMidYMid meet">
+                        <path id="puzzlepath_h" fill="none" stroke="black"></path>
+                        <path id="puzzlepath_v" fill="none" stroke="black"></path>
+                        <path id="puzzlepath_b" fill="none" stroke="black"></path>
+                    </svg>
+            </center>
 
-  <div class="mobile-disclaimer">
-    ⚠️ Downloaded SVG will give full-size puzzle. Best viewed on desktop.
-  </div>
+                </div>
+            <div class="mobile-disclaimer">
+                ⚠️ Downloaded SVG will give full-size puzzle. Best viewed on desktop.
+            </div>
 
-  <div class="progress-bar" id="progress-bar">
-    <div class="progress" id="progress"></div>
-  </div>
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
 
-  <button class="generate-btn" onclick="generate()">Download SVG</button>
-</section>
+            <button class="generate-btn" onclick="generate()">Download SVG</button>
+        </section>
 
-    <a class="hex-link" href="hex-jigsaw.html">Generate Hexagonal Puzzle →</a>
-  </main>
+        <a class="hex-link" href="hex-jigsaw.html">Generate Hexagonal Puzzle →</a>
+    </main>
 
-  <footer>
-    <p>
-      <a href="https://github.com/MB-Deen/jigsaw-svg-generator.git">Forked Source</a> |
-      <a href="https://github.com/Draradech/jigsaw" target="_blank">Original Credit: Draradech</a>
-    </p>
-  </footer>
+    <footer>
+        <p>
+            <a href="https://github.com/MB-Deen/jigsaw-svg-generator.git">Forked Source</a> |
+            <a href="https://github.com/Draradech/jigsaw" target="_blank">Original Credit: Draradech</a>
+        </p>
+    </footer>
 
 </body>
 

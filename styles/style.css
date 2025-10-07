@@ -321,10 +321,6 @@ footer a:hover {
         min-height: 40vh;
     }
 
-    .svg-wrapper {
-        min-height: 40vh;
-    }
-
     .mobile-disclaimer {
         display: block !important;
         font-size: 0.85rem;

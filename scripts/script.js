@@ -145,6 +145,9 @@ function update() {
     $("puzzlepath_h").setAttribute("d", gen_dh());
     $("puzzlepath_v").setAttribute("d", gen_dv());
     $("puzzlepath_b").setAttribute("d", gen_db());
+    const w = document.getElementById("width").value;
+    const h = document.getElementById("height").value;
+    document.getElementById("image-info").innerText = `Width: ${w} mm | Height: ${h} mm`;
 }
 
 function generate() {
@@ -187,10 +190,4 @@ function generate() {
             }, 300);
         }
     }, 150);
-}
-
-function updateDimensions() {
-    const w = document.getElementById("diameter").value;
-    const h = document.getElementById("rings").value;
-    document.getElementById("image-info").innerText = `Diameter: ${w} mm | Rings: ${h} mm`;
 }

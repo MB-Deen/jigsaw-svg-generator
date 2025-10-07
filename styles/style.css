@@ -312,7 +312,12 @@ footer a:hover {
         margin-bottom: auto;
         flex: auto;
     }
-
+.image-info{
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
     .svg-display {
         width: 100%;
     }
